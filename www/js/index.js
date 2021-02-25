@@ -25,5 +25,60 @@ function onDeviceReady() {
     // Cordova is now initialized. Have fun!
 
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+   // document.getElementById('deviceready').classList.add('ready');
 }
+
+let list = $("ul")[0];
+
+//var myNodelist = $("li");
+var i;
+for (i = 0; i < list.children.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  list.children[i].appendChild(span);
+}
+
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+    let li = document.createElement("li");
+    let inputValue = $("#myInput")[0].value;
+    let t = document.createTextNode(inputValue);
+    li.appendChild(t);
+    if (inputValue === '') {
+      alert("Necessites ecriure algo!");
+    } else {
+      let span = document.createElement("SPAN");
+      var txt = document.createTextNode("\u00D7");
+      span.className = "close";
+      span.appendChild(txt);
+      li.appendChild(span);
+      list.appendChild(li);
+    }
+    
+  
+    
+
+   
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function() {
+        var div = this.parentElement;
+        div.style.display = "none";
+      }
+    }
+  }
+
+  $("#addButton").click(newElement);
