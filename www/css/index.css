@@ -118,22 +118,6 @@ h1 {
     font-size: large;
     text-align: left;
   } 
-
-  .ui-li-static {
-    height: 20px;
-  }
-
-  .ui-body-inherit{
-    height: 20px;
-  }
-
-  .ui-first-child{
-    height: 20px; 
-  }
-
-  .ui-last-child{
-    height: 20px;
-  }
   /* li a {
       color:crimson;
        padding: auto 16px 12px 16px; 
