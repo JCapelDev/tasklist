@@ -41,32 +41,35 @@ for (i = 0; i < list.children.length; i++) {
 }
 
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
+$(".close").click(function(){
+  $(this).parent().remove()
+  $("ul")[0].listview("refresh");
+});
+
 
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
-    let li = document.createElement("li");
+    // let li = document.createElement("li");
+    // let li = $("<li></li>");
+    
     let inputValue = $("#myInput")[0].value;
-    let t = document.createTextNode(inputValue);
-    li.appendChild(t);
+    // let t = document.createTextNode(inputValue);
+    // li.appendChild(t);
+    // let t = $(inputValue).text;
+    // li.append(inputValue.value);
     if (inputValue === '') {
       alert("Necessites ecriure algo!");
     } else {
-      let span = document.createElement("SPAN");
-      var txt = document.createTextNode("\u00D7");
-      span.className = "close";
-      span.appendChild(txt);
-      li.appendChild(span);
-      list.appendChild(li);
+      // let span = document.createElement("SPAN");
+      // var txt = document.createTextNode("\u00D7");
+      // span.className = "close";
+      // span.appendChild(txt);
+      // li.append(span);
+      // // li.className = "ui-li-static ui-body-inherit ui-last-child";
+      // list.appendChild(li);
+      $("ul").append('<li>'+inputValue+'<span class="close">X</span></li>');
+      $("ul").listview("refresh");
     }
     
   
@@ -80,5 +83,7 @@ function newElement() {
       }
     }
   }
+
+ 
 
   $("#addButton").click(newElement);
